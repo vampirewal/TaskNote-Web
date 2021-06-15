@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>true</CopyRefAssembliesToPublishDirectory>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  
+    <CopyRefAssembliesToPublishDirectory>true</CopyRefAssembliesToPublishDirectory>
+</PropertyGroup>
+
+
+
+
+  <ItemGroup>
+    <PackageReference Include="WalkingTec.Mvvm.TagHelpers.LayUI" Version="5.2.4" />
+    <PackageReference Include="WalkingTec.Mvvm.Mvc" Version="5.2.4" />
+</ItemGroup>
+
+  <ItemGroup>
+   <ProjectReference Include="..\TaskNote.Model\TaskNote.Model.csproj" />
+    <ProjectReference Include="..\TaskNote.DataAccess\TaskNote.DataAccess.csproj" />
+    <ProjectReference Include="..\TaskNote.ViewModel\TaskNote.ViewModel.csproj" />
+ </ItemGroup >
+</Project>
+
+
