@@ -1,0 +1,15 @@
+﻿@model TaskNote.ViewModel.CURD.TaskGroupModelVMs.TaskGroupModelVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:textbox field="Entity.GroupName" />
+<wt:textbox field="Entity.GroupBackgroundColor" />
+<wt:switch field="Entity.IsFinishedTag" />
+<wt:combobox field="Entity.taskGroupType" />
+</wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

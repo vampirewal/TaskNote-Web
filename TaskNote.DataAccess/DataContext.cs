@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using TaskNote.Model;
 using WalkingTec.Mvvm.Core;
 
 namespace TaskNote.DataAccess
@@ -10,6 +11,11 @@ namespace TaskNote.DataAccess
     {
         public DbSet<FrameworkUser> FrameworkUsers { get; set; }
 
+        public DbSet<TaskModel> tasks { get; set; }
+
+        public DbSet<TaskDtlModel> taskDtls { get; set; }
+
+        public DbSet<TaskGroupModel> taskGroups { get; set; }
 
         public DataContext(CS cs)
              : base(cs)
