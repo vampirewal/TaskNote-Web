@@ -43,8 +43,10 @@ namespace TaskNote.Test
             TaskModelVM vm = rv.Model as TaskModelVM;
             TaskModel v = new TaskModel();
 			
-            v.TaskName = "vivn5";
-            v.TaskDescription = "8Q1j";
+            v.TaskName = "GZsrmM";
+            v.TaskDescription = "LTGDgJnyF";
+            v.NoFinishedTaskDtl = 1;
+            v.FinishedTaskDtl = 93;
             vm.Entity = v;
             _controller.Create(vm);
 
@@ -52,8 +54,10 @@ namespace TaskNote.Test
             {
                 var data = context.Set<TaskModel>().Find(v.ID);
 				
-                Assert.AreEqual(data.TaskName, "vivn5");
-                Assert.AreEqual(data.TaskDescription, "8Q1j");
+                Assert.AreEqual(data.TaskName, "GZsrmM");
+                Assert.AreEqual(data.TaskDescription, "LTGDgJnyF");
+                Assert.AreEqual(data.NoFinishedTaskDtl, 1);
+                Assert.AreEqual(data.FinishedTaskDtl, 93);
                 Assert.AreEqual(data.CreateBy, "user");
                 Assert.IsTrue(DateTime.Now.Subtract(data.CreateTime.Value).Seconds < 10);
             }
@@ -67,8 +71,10 @@ namespace TaskNote.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
        			
-                v.TaskName = "vivn5";
-                v.TaskDescription = "8Q1j";
+                v.TaskName = "GZsrmM";
+                v.TaskDescription = "LTGDgJnyF";
+                v.NoFinishedTaskDtl = 1;
+                v.FinishedTaskDtl = 93;
                 context.Set<TaskModel>().Add(v);
                 context.SaveChanges();
             }
@@ -81,21 +87,27 @@ namespace TaskNote.Test
             v = new TaskModel();
             v.ID = vm.Entity.ID;
        		
-            v.TaskName = "YG8hcE1J";
-            v.TaskDescription = "370Gu40O";
+            v.TaskName = "qYGEokVCG";
+            v.TaskDescription = "mYkPpqd3";
+            v.NoFinishedTaskDtl = 72;
+            v.FinishedTaskDtl = 74;
             vm.Entity = v;
             vm.FC = new Dictionary<string, object>();
 			
             vm.FC.Add("Entity.TaskName", "");
             vm.FC.Add("Entity.TaskDescription", "");
+            vm.FC.Add("Entity.NoFinishedTaskDtl", "");
+            vm.FC.Add("Entity.FinishedTaskDtl", "");
             _controller.Edit(vm);
 
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
                 var data = context.Set<TaskModel>().Find(v.ID);
  				
-                Assert.AreEqual(data.TaskName, "YG8hcE1J");
-                Assert.AreEqual(data.TaskDescription, "370Gu40O");
+                Assert.AreEqual(data.TaskName, "qYGEokVCG");
+                Assert.AreEqual(data.TaskDescription, "mYkPpqd3");
+                Assert.AreEqual(data.NoFinishedTaskDtl, 72);
+                Assert.AreEqual(data.FinishedTaskDtl, 74);
                 Assert.AreEqual(data.UpdateBy, "user");
                 Assert.IsTrue(DateTime.Now.Subtract(data.UpdateTime.Value).Seconds < 10);
             }
@@ -110,8 +122,10 @@ namespace TaskNote.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
         		
-                v.TaskName = "vivn5";
-                v.TaskDescription = "8Q1j";
+                v.TaskName = "GZsrmM";
+                v.TaskDescription = "LTGDgJnyF";
+                v.NoFinishedTaskDtl = 1;
+                v.FinishedTaskDtl = 93;
                 context.Set<TaskModel>().Add(v);
                 context.SaveChanges();
             }
@@ -141,8 +155,10 @@ namespace TaskNote.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
 				
-                v.TaskName = "vivn5";
-                v.TaskDescription = "8Q1j";
+                v.TaskName = "GZsrmM";
+                v.TaskDescription = "LTGDgJnyF";
+                v.NoFinishedTaskDtl = 1;
+                v.FinishedTaskDtl = 93;
                 context.Set<TaskModel>().Add(v);
                 context.SaveChanges();
             }
@@ -159,10 +175,14 @@ namespace TaskNote.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
 				
-                v1.TaskName = "vivn5";
-                v1.TaskDescription = "8Q1j";
-                v2.TaskName = "YG8hcE1J";
-                v2.TaskDescription = "370Gu40O";
+                v1.TaskName = "GZsrmM";
+                v1.TaskDescription = "LTGDgJnyF";
+                v1.NoFinishedTaskDtl = 1;
+                v1.FinishedTaskDtl = 93;
+                v2.TaskName = "qYGEokVCG";
+                v2.TaskDescription = "mYkPpqd3";
+                v2.NoFinishedTaskDtl = 72;
+                v2.FinishedTaskDtl = 74;
                 context.Set<TaskModel>().Add(v1);
                 context.Set<TaskModel>().Add(v2);
                 context.SaveChanges();
@@ -199,10 +219,14 @@ namespace TaskNote.Test
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
 				
-                v1.TaskName = "vivn5";
-                v1.TaskDescription = "8Q1j";
-                v2.TaskName = "YG8hcE1J";
-                v2.TaskDescription = "370Gu40O";
+                v1.TaskName = "GZsrmM";
+                v1.TaskDescription = "LTGDgJnyF";
+                v1.NoFinishedTaskDtl = 1;
+                v1.FinishedTaskDtl = 93;
+                v2.TaskName = "qYGEokVCG";
+                v2.TaskDescription = "mYkPpqd3";
+                v2.NoFinishedTaskDtl = 72;
+                v2.FinishedTaskDtl = 74;
                 context.Set<TaskModel>().Add(v1);
                 context.Set<TaskModel>().Add(v2);
                 context.SaveChanges();

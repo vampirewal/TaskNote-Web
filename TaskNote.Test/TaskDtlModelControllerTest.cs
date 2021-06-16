@@ -44,10 +44,9 @@ namespace TaskNote.Test
             TaskDtlModel v = new TaskDtlModel();
 			
             v.taskId = AddTaskModel();
-            v.taskGroupId = AddTaskGroupModel();
-            v.TaskContext = "orS03ZI";
+            v.taskGroup = TaskNote.Model.TaskGroup.Doing;
+            v.TaskContext = "SFDp";
             v.IsFinished = true;
-            v.AttachmentId = AddFileAttachment();
             vm.Entity = v;
             _controller.Create(vm);
 
@@ -55,7 +54,8 @@ namespace TaskNote.Test
             {
                 var data = context.Set<TaskDtlModel>().Find(v.ID);
 				
-                Assert.AreEqual(data.TaskContext, "orS03ZI");
+                Assert.AreEqual(data.taskGroup, TaskNote.Model.TaskGroup.Doing);
+                Assert.AreEqual(data.TaskContext, "SFDp");
                 Assert.AreEqual(data.IsFinished, true);
                 Assert.AreEqual(data.CreateBy, "user");
                 Assert.IsTrue(DateTime.Now.Subtract(data.CreateTime.Value).Seconds < 10);
@@ -71,10 +71,9 @@ namespace TaskNote.Test
             {
        			
                 v.taskId = AddTaskModel();
-                v.taskGroupId = AddTaskGroupModel();
-                v.TaskContext = "orS03ZI";
+                v.taskGroup = TaskNote.Model.TaskGroup.Doing;
+                v.TaskContext = "SFDp";
                 v.IsFinished = true;
-                v.AttachmentId = AddFileAttachment();
                 context.Set<TaskDtlModel>().Add(v);
                 context.SaveChanges();
             }
@@ -87,24 +86,25 @@ namespace TaskNote.Test
             v = new TaskDtlModel();
             v.ID = vm.Entity.ID;
        		
-            v.TaskContext = "G5JGMv";
-            v.IsFinished = false;
+            v.taskGroup = TaskNote.Model.TaskGroup.Done;
+            v.TaskContext = "GKW";
+            v.IsFinished = true;
             vm.Entity = v;
             vm.FC = new Dictionary<string, object>();
 			
             vm.FC.Add("Entity.taskId", "");
-            vm.FC.Add("Entity.taskGroupId", "");
+            vm.FC.Add("Entity.taskGroup", "");
             vm.FC.Add("Entity.TaskContext", "");
             vm.FC.Add("Entity.IsFinished", "");
-            vm.FC.Add("Entity.AttachmentId", "");
             _controller.Edit(vm);
 
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
             {
                 var data = context.Set<TaskDtlModel>().Find(v.ID);
  				
-                Assert.AreEqual(data.TaskContext, "G5JGMv");
-                Assert.AreEqual(data.IsFinished, false);
+                Assert.AreEqual(data.taskGroup, TaskNote.Model.TaskGroup.Done);
+                Assert.AreEqual(data.TaskContext, "GKW");
+                Assert.AreEqual(data.IsFinished, true);
                 Assert.AreEqual(data.UpdateBy, "user");
                 Assert.IsTrue(DateTime.Now.Subtract(data.UpdateTime.Value).Seconds < 10);
             }
@@ -120,10 +120,9 @@ namespace TaskNote.Test
             {
         		
                 v.taskId = AddTaskModel();
-                v.taskGroupId = AddTaskGroupModel();
-                v.TaskContext = "orS03ZI";
+                v.taskGroup = TaskNote.Model.TaskGroup.Doing;
+                v.TaskContext = "SFDp";
                 v.IsFinished = true;
-                v.AttachmentId = AddFileAttachment();
                 context.Set<TaskDtlModel>().Add(v);
                 context.SaveChanges();
             }
@@ -154,10 +153,9 @@ namespace TaskNote.Test
             {
 				
                 v.taskId = AddTaskModel();
-                v.taskGroupId = AddTaskGroupModel();
-                v.TaskContext = "orS03ZI";
+                v.taskGroup = TaskNote.Model.TaskGroup.Doing;
+                v.TaskContext = "SFDp";
                 v.IsFinished = true;
-                v.AttachmentId = AddFileAttachment();
                 context.Set<TaskDtlModel>().Add(v);
                 context.SaveChanges();
             }
@@ -175,15 +173,13 @@ namespace TaskNote.Test
             {
 				
                 v1.taskId = AddTaskModel();
-                v1.taskGroupId = AddTaskGroupModel();
-                v1.TaskContext = "orS03ZI";
+                v1.taskGroup = TaskNote.Model.TaskGroup.Doing;
+                v1.TaskContext = "SFDp";
                 v1.IsFinished = true;
-                v1.AttachmentId = AddFileAttachment();
                 v2.taskId = v1.taskId; 
-                v2.taskGroupId = v1.taskGroupId; 
-                v2.TaskContext = "G5JGMv";
-                v2.IsFinished = false;
-                v2.AttachmentId = v1.AttachmentId; 
+                v2.taskGroup = TaskNote.Model.TaskGroup.Done;
+                v2.TaskContext = "GKW";
+                v2.IsFinished = true;
                 context.Set<TaskDtlModel>().Add(v1);
                 context.Set<TaskDtlModel>().Add(v2);
                 context.SaveChanges();
@@ -195,10 +191,8 @@ namespace TaskNote.Test
             TaskDtlModelBatchVM vm = rv.Model as TaskDtlModelBatchVM;
             vm.Ids = new string[] { v1.ID.ToString(), v2.ID.ToString() };
             
-            vm.LinkedVM.IsFinished = false;
             vm.FC = new Dictionary<string, object>();
 			
-            vm.FC.Add("LinkedVM.IsFinished", "");
             _controller.DoBatchEdit(vm, null);
 
             using (var context = new DataContext(_seed, DBTypeEnum.Memory))
@@ -206,8 +200,6 @@ namespace TaskNote.Test
                 var data1 = context.Set<TaskDtlModel>().Find(v1.ID);
                 var data2 = context.Set<TaskDtlModel>().Find(v2.ID);
  				
-                Assert.AreEqual(data1.IsFinished, false);
-                Assert.AreEqual(data2.IsFinished, false);
                 Assert.AreEqual(data1.UpdateBy, "user");
                 Assert.IsTrue(DateTime.Now.Subtract(data1.UpdateTime.Value).Seconds < 10);
                 Assert.AreEqual(data2.UpdateBy, "user");
@@ -225,15 +217,13 @@ namespace TaskNote.Test
             {
 				
                 v1.taskId = AddTaskModel();
-                v1.taskGroupId = AddTaskGroupModel();
-                v1.TaskContext = "orS03ZI";
+                v1.taskGroup = TaskNote.Model.TaskGroup.Doing;
+                v1.TaskContext = "SFDp";
                 v1.IsFinished = true;
-                v1.AttachmentId = AddFileAttachment();
                 v2.taskId = v1.taskId; 
-                v2.taskGroupId = v1.taskGroupId; 
-                v2.TaskContext = "G5JGMv";
-                v2.IsFinished = false;
-                v2.AttachmentId = v1.AttachmentId; 
+                v2.taskGroup = TaskNote.Model.TaskGroup.Done;
+                v2.TaskContext = "GKW";
+                v2.IsFinished = true;
                 context.Set<TaskDtlModel>().Add(v1);
                 context.Set<TaskDtlModel>().Add(v2);
                 context.SaveChanges();
@@ -271,50 +261,11 @@ namespace TaskNote.Test
             {
                 try{
 
-                v.TaskName = "iTWD4TakN";
-                v.TaskDescription = "1I9b";
+                v.TaskName = "Zxl";
+                v.TaskDescription = "iFpojTIV";
+                v.NoFinishedTaskDtl = 53;
+                v.FinishedTaskDtl = 79;
                 context.Set<TaskModel>().Add(v);
-                context.SaveChanges();
-                }
-                catch{}
-            }
-            return v.ID;
-        }
-
-        private Guid AddTaskGroupModel()
-        {
-            TaskGroupModel v = new TaskGroupModel();
-            using (var context = new DataContext(_seed, DBTypeEnum.Memory))
-            {
-                try{
-
-                v.GroupName = "fpEkc";
-                v.GroupBackgroundColor = "POiD7jd";
-                v.IsFinishedTag = true;
-                v.taskGroupType = TaskNote.Model.TaskGroupType.SystemCreate;
-                context.Set<TaskGroupModel>().Add(v);
-                context.SaveChanges();
-                }
-                catch{}
-            }
-            return v.ID;
-        }
-
-        private Guid AddFileAttachment()
-        {
-            FileAttachment v = new FileAttachment();
-            using (var context = new DataContext(_seed, DBTypeEnum.Memory))
-            {
-                try{
-
-                v.FileName = "U5Zr5gTi";
-                v.FileExt = "rk1IXzeuT";
-                v.Path = "jGXL";
-                v.Length = 25;
-                v.SaveMode = "vMQxB0m";
-                v.ExtraInfo = "cR8CLfwI";
-                v.HandlerInfo = "LaKzJhkRL";
-                context.Set<FileAttachment>().Add(v);
                 context.SaveChanges();
                 }
                 catch{}

@@ -20,7 +20,11 @@
    <ProjectReference Include="..\TaskNote.Model\TaskNote.Model.csproj" />
     <ProjectReference Include="..\TaskNote.DataAccess\TaskNote.DataAccess.csproj" />
     <ProjectReference Include="..\TaskNote.ViewModel\TaskNote.ViewModel.csproj" />
- </ItemGroup >
+ </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
 </Project>
 
 

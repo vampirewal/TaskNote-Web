@@ -4,10 +4,9 @@
 <wt:form vm="@Model">
 <wt:row items-per-row="ItemsPerRowEnum.Two">
 <wt:combobox field="Entity.taskId" items="Alltasks"/>
-<wt:combobox field="Entity.taskGroupId" items="AlltaskGroups"/>
+<wt:combobox field="Entity.taskGroup" />
 <wt:textbox field="Entity.TaskContext" />
 <wt:switch field="Entity.IsFinished" />
-<wt:upload field="Entity.AttachmentId" />
 </wt:row>
     <wt:hidden field="Entity.ID" />
     <wt:row align="AlignEnum.Right">

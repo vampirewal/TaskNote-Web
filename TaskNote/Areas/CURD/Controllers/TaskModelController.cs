@@ -5,13 +5,11 @@ using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
 using TaskNote.ViewModel.CURD.TaskModelVMs;
-using TaskNote.Model;
-using System.Linq;
 
 namespace TaskNote.Controllers
 {
     [Area("CURD")]
-    [ActionDescription("任务管理")]
+    [ActionDescription("任务管理中心")]
     public partial class TaskModelController : BaseController
     {
         #region Search
@@ -135,7 +133,6 @@ namespace TaskNote.Controllers
         public ActionResult Details(string id)
         {
             var vm = Wtm.CreateVM<TaskModelVM>(id);
-            //vm.taskDtls = DC.Set<TaskDtlModel>().DPWhere(Wtm, w => w.taskId == vm.Entity.ID).ToList();
             return PartialView(vm);
         }
         #endregion

@@ -4,7 +4,7 @@
 <wt:searchpanel vm="@Model" reset-btn="true">
 <wt:row items-per-row="ItemsPerRowEnum.Three">
 <wt:combobox field="Searcher.taskId" items="Searcher.Alltasks" empty-text="@Localizer["Sys.All"]" />
-<wt:combobox field="Searcher.taskGroupId" items="Searcher.AlltaskGroups" empty-text="@Localizer["Sys.All"]" />
+<wt:combobox field="Searcher.taskGroup" empty-text="@Localizer["Sys.All"]" />
 <wt:textbox field="Searcher.TaskContext" />
 <wt:combobox field="Searcher.IsFinished" empty-text="@Localizer["Sys.All"]" />
 </wt:row>

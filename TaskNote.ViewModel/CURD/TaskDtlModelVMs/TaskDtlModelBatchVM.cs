@@ -25,15 +25,9 @@ namespace TaskNote.ViewModel.CURD.TaskDtlModelVMs
     /// </summary>
     public class TaskDtlModel_BatchEdit : BaseVM
     {
-        public List<ComboSelectListItem> AlltaskGroups { get; set; }
-        [Display(Name = "关联任务组")]
-        public Guid? taskGroupId { get; set; }
-        [Display(Name = "是否完成")]
-        public Boolean? IsFinished { get; set; }
 
         protected override void InitVM()
         {
-            AlltaskGroups = DC.Set<TaskGroupModel>().GetSelectListItems(Wtm, y => y.GroupName);
         }
 
     }

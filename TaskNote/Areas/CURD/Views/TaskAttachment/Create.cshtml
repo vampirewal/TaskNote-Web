@@ -1,0 +1,14 @@
+﻿@model TaskNote.ViewModel.CURD.TaskAttachmentVMs.TaskAttachmentVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:form vm="@Model">
+<wt:row items-per-row="ItemsPerRowEnum.Two">
+<wt:combobox field="Entity.taskModelId" items="AlltaskModels"/>
+<wt:upload field="Entity.FileId" />
+<wt:textbox field="Entity.Order" />
+</wt:row>
+    <wt:row align="AlignEnum.Right">
+        <wt:submitbutton />
+        <wt:closebutton />
+    </wt:row>
+</wt:form>

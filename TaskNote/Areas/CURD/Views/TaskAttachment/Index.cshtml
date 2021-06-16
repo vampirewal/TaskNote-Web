@@ -1,0 +1,9 @@
+﻿@model TaskNote.ViewModel.CURD.TaskAttachmentVMs.TaskAttachmentListVM
+@inject IStringLocalizer<Program> Localizer;
+
+<wt:searchpanel vm="@Model" reset-btn="true">
+<wt:row items-per-row="ItemsPerRowEnum.Three">
+<wt:combobox field="Searcher.taskModelId" items="Searcher.AlltaskModels" empty-text="@Localizer["Sys.All"]" />
+</wt:row>
+</wt:searchpanel>
+<wt:grid vm="@Model" url="/CURD/TaskAttachment/Search"/>

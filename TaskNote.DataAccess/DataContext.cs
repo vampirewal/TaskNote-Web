@@ -13,9 +13,9 @@ namespace TaskNote.DataAccess
 
         public DbSet<TaskModel> tasks { get; set; }
 
-        public DbSet<TaskDtlModel> taskDtls { get; set; }
+        public DbSet<TaskAttachment> taskAttachments { get; set; }
 
-        public DbSet<TaskGroupModel> taskGroups { get; set; }
+        public DbSet<TaskDtlModel> taskDtls { get; set; }
 
         public DataContext(CS cs)
              : base(cs)

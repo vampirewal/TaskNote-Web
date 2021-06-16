@@ -20,6 +20,10 @@ namespace TaskNote.ViewModel.CURD.TaskModelVMs
         public DateRange StartTime { get; set; }
         [Display(Name = "结束时间")]
         public DateRange EndTime { get; set; }
+        [Display(Name = "未完成任务明细")]
+        public Int32? NoFinishedTaskDtl { get; set; }
+        [Display(Name = "已完成任务明细")]
+        public Int32? FinishedTaskDtl { get; set; }
 
         protected override void InitVM()
         {

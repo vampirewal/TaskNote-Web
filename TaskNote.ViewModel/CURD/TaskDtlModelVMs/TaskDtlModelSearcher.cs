@@ -15,9 +15,8 @@ namespace TaskNote.ViewModel.CURD.TaskDtlModelVMs
         public List<ComboSelectListItem> Alltasks { get; set; }
         [Display(Name = "关联任务")]
         public Guid? taskId { get; set; }
-        public List<ComboSelectListItem> AlltaskGroups { get; set; }
-        [Display(Name = "关联任务组")]
-        public Guid? taskGroupId { get; set; }
+        [Display(Name = "任务情况")]
+        public TaskGroup? taskGroup { get; set; }
         [Display(Name = "内容")]
         public String TaskContext { get; set; }
         [Display(Name = "是否完成")]
@@ -26,7 +25,6 @@ namespace TaskNote.ViewModel.CURD.TaskDtlModelVMs
         protected override void InitVM()
         {
             Alltasks = DC.Set<TaskModel>().GetSelectListItems(Wtm, y => y.TaskName);
-            AlltaskGroups = DC.Set<TaskGroupModel>().GetSelectListItems(Wtm, y => y.GroupName);
         }
 
     }

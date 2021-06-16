@@ -4,27 +4,27 @@ using System;
 using WalkingTec.Mvvm.Core;
 using WalkingTec.Mvvm.Mvc;
 using WalkingTec.Mvvm.Core.Extensions;
-using TaskNote.ViewModel.CURD.TaskGroupModelVMs;
+using TaskNote.ViewModel.CURD.TaskAttachmentVMs;
 
 namespace TaskNote.Controllers
 {
     [Area("CURD")]
-    [ActionDescription("任务组管理")]
-    public partial class TaskGroupModelController : BaseController
+    [ActionDescription("任务附件")]
+    public partial class TaskAttachmentController : BaseController
     {
         #region Search
         [ActionDescription("Sys.Search")]
         public ActionResult Index()
         {
-            var vm = Wtm.CreateVM<TaskGroupModelListVM>();
+            var vm = Wtm.CreateVM<TaskAttachmentListVM>();
             return PartialView(vm);
         }
 
         [ActionDescription("Sys.Search")]
         [HttpPost]
-        public string Search(TaskGroupModelSearcher searcher)
+        public string Search(TaskAttachmentSearcher searcher)
         {
-            var vm = Wtm.CreateVM<TaskGroupModelListVM>(passInit: true);
+            var vm = Wtm.CreateVM<TaskAttachmentListVM>(passInit: true);
             if (ModelState.IsValid)
             {
                 vm.Searcher = searcher;
@@ -42,13 +42,13 @@ namespace TaskNote.Controllers
         [ActionDescription("Sys.Create")]
         public ActionResult Create()
         {
-            var vm = Wtm.CreateVM<TaskGroupModelVM>();
+            var vm = Wtm.CreateVM<TaskAttachmentVM>();
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.Create")]
-        public ActionResult Create(TaskGroupModelVM vm)
+        public ActionResult Create(TaskAttachmentVM vm)
         {
             if (!ModelState.IsValid)
             {
@@ -74,14 +74,14 @@ namespace TaskNote.Controllers
         [ActionDescription("Sys.Edit")]
         public ActionResult Edit(string id)
         {
-            var vm = Wtm.CreateVM<TaskGroupModelVM>(id);
+            var vm = Wtm.CreateVM<TaskAttachmentVM>(id);
             return PartialView(vm);
         }
 
         [ActionDescription("Sys.Edit")]
         [HttpPost]
         [ValidateFormItemOnly]
-        public ActionResult Edit(TaskGroupModelVM vm)
+        public ActionResult Edit(TaskAttachmentVM vm)
         {
             if (!ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace TaskNote.Controllers
         [ActionDescription("Sys.Delete")]
         public ActionResult Delete(string id)
         {
-            var vm = Wtm.CreateVM<TaskGroupModelVM>(id);
+            var vm = Wtm.CreateVM<TaskAttachmentVM>(id);
             return PartialView(vm);
         }
 
@@ -115,7 +115,7 @@ namespace TaskNote.Controllers
         [HttpPost]
         public ActionResult Delete(string id, IFormCollection nouse)
         {
-            var vm = Wtm.CreateVM<TaskGroupModelVM>(id);
+            var vm = Wtm.CreateVM<TaskAttachmentVM>(id);
             vm.DoDelete();
             if (!ModelState.IsValid)
             {
@@ -132,7 +132,7 @@ namespace TaskNote.Controllers
         [ActionDescription("Sys.Details")]
         public ActionResult Details(string id)
         {
-            var vm = Wtm.CreateVM<TaskGroupModelVM>(id);
+            var vm = Wtm.CreateVM<TaskAttachmentVM>(id);
             return PartialView(vm);
         }
         #endregion
@@ -142,13 +142,13 @@ namespace TaskNote.Controllers
         [ActionDescription("Sys.BatchEdit")]
         public ActionResult BatchEdit(string[] IDs)
         {
-            var vm = Wtm.CreateVM<TaskGroupModelBatchVM>(Ids: IDs);
+            var vm = Wtm.CreateVM<TaskAttachmentBatchVM>(Ids: IDs);
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.BatchEdit")]
-        public ActionResult DoBatchEdit(TaskGroupModelBatchVM vm, IFormCollection nouse)
+        public ActionResult DoBatchEdit(TaskAttachmentBatchVM vm, IFormCollection nouse)
         {
             if (!ModelState.IsValid || !vm.DoBatchEdit())
             {
@@ -166,13 +166,13 @@ namespace TaskNote.Controllers
         [ActionDescription("Sys.BatchDelete")]
         public ActionResult BatchDelete(string[] IDs)
         {
-            var vm = Wtm.CreateVM<TaskGroupModelBatchVM>(Ids: IDs);
+            var vm = Wtm.CreateVM<TaskAttachmentBatchVM>(Ids: IDs);
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.BatchDelete")]
-        public ActionResult DoBatchDelete(TaskGroupModelBatchVM vm, IFormCollection nouse)
+        public ActionResult DoBatchDelete(TaskAttachmentBatchVM vm, IFormCollection nouse)
         {
             if (!ModelState.IsValid || !vm.DoBatchDelete())
             {
@@ -189,13 +189,13 @@ namespace TaskNote.Controllers
 		[ActionDescription("Sys.Import")]
         public ActionResult Import()
         {
-            var vm = Wtm.CreateVM<TaskGroupModelImportVM>();
+            var vm = Wtm.CreateVM<TaskAttachmentImportVM>();
             return PartialView(vm);
         }
 
         [HttpPost]
         [ActionDescription("Sys.Import")]
-        public ActionResult Import(TaskGroupModelImportVM vm, IFormCollection nouse)
+        public ActionResult Import(TaskAttachmentImportVM vm, IFormCollection nouse)
         {
             if (vm.ErrorListVM.EntityList.Count > 0 || !vm.BatchSaveData())
             {
@@ -210,7 +210,7 @@ namespace TaskNote.Controllers
 
         [ActionDescription("Sys.Export")]
         [HttpPost]
-        public IActionResult ExportExcel(TaskGroupModelListVM vm)
+        public IActionResult ExportExcel(TaskAttachmentListVM vm)
         {
             return vm.GetExportData();
         }

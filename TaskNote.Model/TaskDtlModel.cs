@@ -32,18 +32,17 @@ namespace TaskNote.Model
         public Guid? taskId { get; set; }
         [Display(Name = "关联任务")]
         public TaskModel task { get; set; }
-        [Display(Name = "关联任务组")]
-        public Guid? taskGroupId { get; set; }
-        [Display(Name = "关联任务组")]
-        public TaskGroupModel taskGroup { get; set; }
+        [Display(Name = "任务情况")]
+        public TaskGroup taskGroup { get; set; }
+
         [Display(Name = "内容")]
         public string TaskContext { get; set; }
         [Display(Name = "是否完成")]
         public bool IsFinished { get; set; }
-        [Display(Name = "附件")]
-        public Guid? AttachmentId { get; set; }
-        [Display(Name = "附件")]
-        public FileAttachment Attachment { get; set; }
+        //[Display(Name = "附件")]
+        //public Guid? AttachmentId { get; set; }
+        //[Display(Name = "附件")]
+        //public FileAttachment Attachment { get; set; }
         #endregion
 
         #region 接口属性
@@ -58,5 +57,15 @@ namespace TaskNote.Model
         [Display(Name = "是否删除")]
         public bool IsValid { get; set; }
         #endregion
+    }
+
+    public enum TaskGroup
+    {
+        [Display(Name = "准备去做")]
+        ToDo =0,
+        [Display(Name = "正在做")]
+        Doing =1,
+        [Display(Name = "已完成")]
+        Done =2
     }
 }

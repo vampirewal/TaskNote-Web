@@ -1,13 +1,12 @@
-﻿@model TaskNote.ViewModel.CURD.TaskGroupModelVMs.TaskGroupModelVM
+﻿@model TaskNote.ViewModel.CURD.TaskAttachmentVMs.TaskAttachmentVM
 @inject IStringLocalizer<Program> Localizer;
 
 <wt:form vm="@Model">
 	<wt:quote>@Localizer["Sys.DeleteConfirm"]</wt:quote>
 <wt:row items-per-row="ItemsPerRowEnum.Two">
-<wt:display field="Entity.GroupName" />
-<wt:display field="Entity.GroupBackgroundColor" />
-<wt:display field="Entity.IsFinishedTag" />
-<wt:display field="Entity.taskGroupType" />
+<wt:display field="Entity.taskModel.TaskName" />
+<wt:display field="Entity.FileId" />
+<wt:display field="Entity.Order" />
 </wt:row>
     <wt:hidden field="Entity.ID" />
     <wt:row align="AlignEnum.Right">

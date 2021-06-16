@@ -8,14 +8,14 @@ using WalkingTec.Mvvm.Core.Extensions;
 using TaskNote.Model;
 
 
-namespace TaskNote.ViewModel.CURD.TaskGroupModelVMs
+namespace TaskNote.ViewModel.CURD.TaskAttachmentVMs
 {
-    public partial class TaskGroupModelBatchVM : BaseBatchVM<TaskGroupModel, TaskGroupModel_BatchEdit>
+    public partial class TaskAttachmentBatchVM : BaseBatchVM<TaskAttachment, TaskAttachment_BatchEdit>
     {
-        public TaskGroupModelBatchVM()
+        public TaskAttachmentBatchVM()
         {
-            ListVM = new TaskGroupModelListVM();
-            LinkedVM = new TaskGroupModel_BatchEdit();
+            ListVM = new TaskAttachmentListVM();
+            LinkedVM = new TaskAttachment_BatchEdit();
         }
 
     }
@@ -23,7 +23,7 @@ namespace TaskNote.ViewModel.CURD.TaskGroupModelVMs
 	/// <summary>
     /// Class to define batch edit fields
     /// </summary>
-    public class TaskGroupModel_BatchEdit : BaseVM
+    public class TaskAttachment_BatchEdit : BaseVM
     {
 
         protected override void InitVM()

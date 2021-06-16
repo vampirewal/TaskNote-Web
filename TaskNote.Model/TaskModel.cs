@@ -37,7 +37,13 @@ namespace TaskNote.Model
         [Display(Name = "结束时间")]
         public DateTime EndTime { get; set; }
 
-        public List<FileAttachment> Attachments { get; set; } = new List<FileAttachment>();
+        [Display(Name = "附件")]
+        public List<TaskAttachment> Attachments { get; set; } = new List<TaskAttachment>();
+
+        [Display(Name = "未完成任务明细")]
+        public int NoFinishedTaskDtl { get; set; }
+        [Display(Name = "已完成任务明细")]
+        public int FinishedTaskDtl { get; set; }
         #endregion
 
         #region 接口属性
@@ -53,5 +59,19 @@ namespace TaskNote.Model
         public bool IsValid { get ; set ; }
         #endregion
 
+    }
+
+    public class TaskAttachment : TopBasePoco, ISubFile
+    {
+        [Display(Name = "关联任务")]
+        public Guid? taskModelId { get; set; }
+        [Display(Name = "关联任务")]
+        public TaskModel taskModel { get; set; }
+        [Display(Name = "附件")]
+        public Guid FileId { get ; set ; }
+        [Display(Name = "附件")]
+        public FileAttachment File { get; set; }
+        [Display(Name = "排序")]
+        public int Order { get; set; }
     }
 }

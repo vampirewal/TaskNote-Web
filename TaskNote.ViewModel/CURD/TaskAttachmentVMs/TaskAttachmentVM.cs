@@ -8,17 +8,20 @@ using WalkingTec.Mvvm.Core.Extensions;
 using TaskNote.Model;
 
 
-namespace TaskNote.ViewModel.CURD.TaskGroupModelVMs
+namespace TaskNote.ViewModel.CURD.TaskAttachmentVMs
 {
-    public partial class TaskGroupModelVM : BaseCRUDVM<TaskGroupModel>
+    public partial class TaskAttachmentVM : BaseCRUDVM<TaskAttachment>
     {
+        public List<ComboSelectListItem> AlltaskModels { get; set; }
 
-        public TaskGroupModelVM()
+        public TaskAttachmentVM()
         {
+            SetInclude(x => x.taskModel);
         }
 
         protected override void InitVM()
         {
+            AlltaskModels = DC.Set<TaskModel>().GetSelectListItems(Wtm, y => y.TaskName);
         }
 
         public override void DoAdd()

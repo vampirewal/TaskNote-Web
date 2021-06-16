@@ -14,8 +14,8 @@ namespace TaskNote.ViewModel.CURD.TaskDtlModelVMs
     {
         [Display(Name = "关联任务")]
         public ExcelPropety task_Excel = ExcelPropety.CreateProperty<TaskDtlModel>(x => x.taskId);
-        [Display(Name = "关联任务组")]
-        public ExcelPropety taskGroup_Excel = ExcelPropety.CreateProperty<TaskDtlModel>(x => x.taskGroupId);
+        [Display(Name = "任务情况")]
+        public ExcelPropety taskGroup_Excel = ExcelPropety.CreateProperty<TaskDtlModel>(x => x.taskGroup);
         [Display(Name = "内容")]
         public ExcelPropety TaskContext_Excel = ExcelPropety.CreateProperty<TaskDtlModel>(x => x.TaskContext);
         [Display(Name = "是否完成")]
@@ -25,8 +25,6 @@ namespace TaskNote.ViewModel.CURD.TaskDtlModelVMs
         {
             task_Excel.DataType = ColumnDataType.ComboBox;
             task_Excel.ListItems = DC.Set<TaskModel>().GetSelectListItems(Wtm, y => y.TaskName);
-            taskGroup_Excel.DataType = ColumnDataType.ComboBox;
-            taskGroup_Excel.ListItems = DC.Set<TaskGroupModel>().GetSelectListItems(Wtm, y => y.GroupName);
         }
 
     }
