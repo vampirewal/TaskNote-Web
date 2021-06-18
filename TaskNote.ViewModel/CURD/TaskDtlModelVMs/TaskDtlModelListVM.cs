@@ -32,7 +32,7 @@ namespace TaskNote.ViewModel.CURD.TaskDtlModelVMs
         protected override IEnumerable<IGridColumn<TaskDtlModel_View>> InitGridHeader()
         {
             return new List<GridColumn<TaskDtlModel_View>>{
-                this.MakeGridHeader(x => x.TaskName_view),
+                //this.MakeGridHeader(x => x.TaskName_view),
                 this.MakeGridHeader(x => x.taskGroup),
                 this.MakeGridHeader(x => x.TaskContext).SetAllowMultiLine(true),
                 this.MakeGridHeader(x => x.IsFinished),

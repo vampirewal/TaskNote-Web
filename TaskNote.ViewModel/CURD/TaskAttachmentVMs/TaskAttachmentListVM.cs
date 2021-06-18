@@ -32,9 +32,10 @@ namespace TaskNote.ViewModel.CURD.TaskAttachmentVMs
         protected override IEnumerable<IGridColumn<TaskAttachment_View>> InitGridHeader()
         {
             return new List<GridColumn<TaskAttachment_View>>{
-                this.MakeGridHeader(x => x.TaskName_view),
+                //this.MakeGridHeader(x => x.TaskName_view),
+                //this.MakeGridHeader(x=>x.File.FileName),
                 this.MakeGridHeader(x => x.FileId).SetFormat(FileIdFormat),
-                this.MakeGridHeader(x => x.Order),
+                //this.MakeGridHeader(x => x.Order),
                 this.MakeGridHeaderAction(width: 200)
             };
         }
@@ -68,6 +69,8 @@ namespace TaskNote.ViewModel.CURD.TaskAttachmentVMs
     public class TaskAttachment_View : TaskAttachment{
         [Display(Name = "任务名称")]
         public String TaskName_view { get; set; }
+
+
 
     }
 }

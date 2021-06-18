@@ -20,7 +20,7 @@ namespace TaskNote.ViewModel.CURD.TaskModelVMs
                 this.MakeStandardAction("TaskModel", GridActionStandardTypesEnum.Create, Localizer["Sys.Create"],"CURD", dialogWidth: 800),
                 this.MakeStandardAction("TaskModel", GridActionStandardTypesEnum.Edit, Localizer["Sys.Edit"], "CURD", dialogWidth: 800),
                 this.MakeStandardAction("TaskModel", GridActionStandardTypesEnum.Delete, Localizer["Sys.Delete"], "CURD", dialogWidth: 800),
-                this.MakeStandardAction("TaskModel", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "CURD", dialogWidth: 1000,dialogHeight:300),
+                this.MakeStandardAction("TaskModel", GridActionStandardTypesEnum.Details, Localizer["Sys.Details"], "CURD", dialogWidth: 1000,dialogHeight:600),
                 this.MakeStandardAction("TaskModel", GridActionStandardTypesEnum.BatchEdit, Localizer["Sys.BatchEdit"], "CURD", dialogWidth: 800),
                 this.MakeStandardAction("TaskModel", GridActionStandardTypesEnum.BatchDelete, Localizer["Sys.BatchDelete"], "CURD", dialogWidth: 800),
                 this.MakeStandardAction("TaskModel", GridActionStandardTypesEnum.Import, Localizer["Sys.Import"], "CURD", dialogWidth: 800),
